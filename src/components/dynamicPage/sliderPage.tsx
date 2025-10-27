@@ -26,14 +26,14 @@ export default function SliderPage() {
 
   return (
     <section className="">
-      <div className="mx-auto flex flex-col md:flex-row items-center justify-between gap-10 px-6 md:px-24">
+      <div className="mx-auto flex flex-col md:flex-row items-center justify-between gap-10   overflow-hidden  ">
         {/* Right Image Slider Section */}
-        <div className="lg:w-[50%] relative py-10 h-[500px] flex items-center justify-center bg-[#F7F7F7] rounded">
+        <div className="w-[50%] relative py-10 h-[400px] flex items-center justify-center bg-[#F7F7F7] rounded">
           {/* Slider Images */}
           {images.map((src, index) => (
             <div
               key={index}
-              className={`absolute transition-opacity duration-1000 ${
+              className={`absolute transition-opacity duration-1000  ${
                 index === current ? 'opacity-100' : 'opacity-0'
               }`}
             >
@@ -41,8 +41,8 @@ export default function SliderPage() {
                 src={src}
                 alt={`Hero ${index + 1}`}
                 width={300}
-                height={500}
-                className="object-contain"
+                height={300}
+                className="object-contain "
               />
             </div>
           ))}
@@ -64,7 +64,7 @@ export default function SliderPage() {
           </button>
         </div>
         {/* Left Text Section */}
-        <div className="lg:w-[50%]">
+        <div className="w-[50%]">
           <h1 className="text-xl md:text-3xl font-extrabold text-title leading-tight">
             Human Body System
           </h1>
