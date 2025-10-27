@@ -75,7 +75,7 @@ export default function CategoryPage({
   const options = ['$0 – $100', '$100 – $200', '$200 – $300', '$300 – $400'];
 
   return (
-    <div className="w-[90%] mx-auto py-10">
+    <div className="w-[1440px] mx-auto py-10 px-6 md:px-24">
       {/* Breadcrumb */}
       <div className="text-sm text-gray-500 mb-4">
         Home / <span className="text-black font-medium capitalize">{slug}</span>
