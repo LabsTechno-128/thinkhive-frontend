@@ -3,7 +3,28 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #473BA4;
+  --secondary-color: #6A5BE2;
+  --text-title: #1E1E1E;
+  --text-normal: #818B9C;
+  --bg-color: #f9fafb;
 }
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+/* Text classes */
+.text-title {
+  color: var(--text-title);
+}
+.text-normal {
+  color: var(--text-normal);
+}
+
 
 @theme inline {
   --color-background: var(--background);
