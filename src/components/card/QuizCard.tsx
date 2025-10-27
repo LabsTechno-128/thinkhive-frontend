@@ -1,14 +1,17 @@
-"use client";
-import Image from "next/image";
-import { FiHeart, FiStar } from "react-icons/fi";
-import { quizType } from "./type";
+'use client';
+import Image from 'next/image';
+import { FiHeart, FiStar } from 'react-icons/fi';
+import { quizType } from './type';
+import Link from 'next/link';
 
- 
-
-export default function QuizCard({ quiz , isFavorite, onToggleFavorite }:{
-  quiz:quizType,
-  isFavorite:boolean,
-  onToggleFavorite:(id:number)=>void
+export default function QuizCard({
+  quiz,
+  isFavorite,
+  onToggleFavorite
+}: {
+  quiz: quizType;
+  isFavorite: boolean;
+  onToggleFavorite: (id: number) => void;
 }) {
   return (
     <div className="bg-white rounded-2xl  transition-all duration-300  flex flex-col relative h-[420px]">
@@ -20,7 +23,7 @@ export default function QuizCard({ quiz , isFavorite, onToggleFavorite }:{
         >
           <FiHeart
             size={22}
-            fill={isFavorite ? "red" : "none"}
+            fill={isFavorite ? 'red' : 'none'}
             strokeWidth={1.5}
           />
         </button>
@@ -57,9 +60,11 @@ export default function QuizCard({ quiz , isFavorite, onToggleFavorite }:{
       </div>
 
       {/* Button */}
-      <button className="mt-auto bg-primary hover:bg-secondary text-white py-2 rounded-lg font-medium hover:opacity-90 transition-all">
-        View Details
-      </button>
+      <Link href={`/category/${quiz.category.toLowerCase()}/${quiz.id}`}>
+        <button className="mt-auto bg-primary hover:bg-secondary text-white py-2 rounded-lg font-medium hover:opacity-90 transition-all w-full">
+          View Details
+        </button>
+      </Link>
     </div>
   );
 }

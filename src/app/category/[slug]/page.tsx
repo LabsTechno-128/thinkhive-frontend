@@ -55,6 +55,7 @@ export default function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = React.use(params);
+  console.log("slug", typeof(slug))
   const [sortOrder, setSortOrder] = useState('relevant');
   const [favorites, setFavorites] = useState<number[]>([]);
   const [openBestFilter, setOpenBestFilter] = useState(true);
@@ -83,7 +84,7 @@ export default function CategoryPage({
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold">Showing quiz for “{slug}”</h2>
-        <div className='flex gap-4'>
+        <div className="flex gap-4">
           <div className="flex items-center gap-2">
             <label className="text-sm text-gray-600">Sort By:</label>
             <select
