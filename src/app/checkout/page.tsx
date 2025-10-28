@@ -59,7 +59,7 @@ export default function ChackOutPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex gap-4 justify-between bg-[#F7F7F7] px-4 lg:px-24 py-14">
+      <div className="flex gap-4 justify-between bg-[#F7F7F7] py-14 px-6 lg:px-24 max-w-[1440px] mx-auto">
         <div>
           <h1 className="text-3xl font-bold">Checkout</h1>
           <p className="text-normal pt-2">Showing your choices product</p>
@@ -71,7 +71,7 @@ export default function ChackOutPage() {
       <div className="flex flex-col lg:flex-row gap-6 px-4 lg:px-16 max-w-[1440px] mx-auto -mt-9">
         {/* Left Section */}
         <div className="bg-white w-full lg:w-2/3 rounded-xl shadow-sm border border-[#E4E9EE]">
-          <div className="p-5 border border-[#E4E9EE]">
+          <div className="p-5 ">
             <h2 className="font-semibold text-gray-800 text-lg">
               Payment Method
             </h2>
@@ -82,7 +82,7 @@ export default function ChackOutPage() {
             {products.map((p) => (
               <div
                 key={p.id}
-                className="flex items-center justify-between p-5 hover:bg-gray-50 transition border border-[#E4E9EE]"
+                className="flex items-center justify-between p-5 hover:bg-gray-50 transition border-t border-[#E4E9EE]"
               >
                 {/* Checkbox + Image + Info */}
                 <div className="flex items-center gap-4">
@@ -165,7 +165,7 @@ export default function ChackOutPage() {
               <button className="w-full bg-gray-100 text-gray-700 rounded-lg py-2 text-sm hover:bg-gray-200">
                 Use a Promo
               </button>
-              <Link href="/checkout">
+              <Link href="/success">
                 <button className="w-full bg-indigo-600 text-white rounded-lg py-2 text-sm hover:bg-indigo-700">
                   Checkout
                 </button>
