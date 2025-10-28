@@ -68,12 +68,14 @@ export default function Navbar() {
         </div>
 
         {/* Right - Icons */}
-        <div className="flex items-center gap-5">
-          <button className="text-gray-600 hover:text-indigo-600">
-            <FiShoppingCart className="w-6 h-6" />
-          </button>
+        <div className="flex items-center gap-5 ">
+          <Link href="/cart">
+            <button className="text-gray-600 hover:text-indigo-600 cursor-pointer">
+              <FiShoppingCart className="w-6 h-6" />
+            </button>
+          </Link>
           <p className="border border-gray-200 h-5 "></p>
-          <button className="text-gray-600 hover:text-indigo-600 border border-gray-200 rounded-full p-1.5">
+          <button className="text-gray-600 hover:text-indigo-600 border border-gray-200 rounded-full p-1.5 cursor-pointer">
             <FiUser className="w-5 h-5" />
           </button>
         </div>
