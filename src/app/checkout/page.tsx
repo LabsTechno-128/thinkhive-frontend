@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
+
 
 type Product = {
   id: number;
@@ -17,28 +17,28 @@ type Product = {
 const initialProducts: Product[] = [
   {
     id: 1,
-    name: 'Geography Mastery',
+    name: 'Bkash',
     category: 'Geography',
-    price: 15,
+    price: +8801712131343,
     img: '/assets/card-quzzy.png'
   },
   {
     id: 2,
-    name: 'Grammar Essentials',
+    name: 'Rocket',
     category: 'English',
-    price: 20,
+    price: +8801712131343,
     img: '/assets/card-quzzy.png'
   },
   {
     id: 3,
     name: 'Human Body System',
     category: 'Science',
-    price: 46,
+    price: +8801712131343,
     img: '/assets/card-quzzy.png'
   }
 ];
 
-export default function CartPage() {
+export default function ChackOutPage() {
   const [products, setProducts] = useState<Product[]>(
     initialProducts.map((p) => ({ ...p, qty: 1, selected: false }))
   );
@@ -48,18 +48,7 @@ export default function CartPage() {
       prev.map((p) => (p.id === id ? { ...p, selected: !p.selected } : p))
     );
   };
-
-  const changeQty = (id: number, delta: number) => {
-    setProducts((prev) =>
-      prev.map((p) =>
-        p.id === id ? { ...p, qty: Math.max(1, (p.qty || 1) + delta) } : p
-      )
-    );
-  };
-
-  const removeProduct = (id: number) => {
-    setProducts((prev) => prev.filter((p) => p.id !== id));
-  };
+;
 
   const selectedProducts = products.filter((p) => p.selected);
   const totalPrice = selectedProducts.reduce(
@@ -72,17 +61,10 @@ export default function CartPage() {
       {/* Header */}
       <div className="flex gap-4 justify-between bg-[#F7F7F7] px-4 lg:px-24 py-14">
         <div>
-          <h1 className="text-3xl font-bold">Shopping Chart</h1>
+          <h1 className="text-3xl font-bold">Checkout</h1>
           <p className="text-normal pt-2">Showing your choices product</p>
         </div>
-        <div className="flex items-center gap-2">
-          <label className="text-sm text-gray-600">Sort By:</label>
-          <select className="border rounded-md px-2 py-1 text-sm focus:outline-none">
-            <option value="relevant">Relevant Order</option>
-            <option value="price_low_high">Price: Low → High</option>
-            <option value="price_high_low">Price: High → Low</option>
-          </select>
-        </div>
+
       </div>
 
       {/* Main */}
@@ -91,9 +73,9 @@ export default function CartPage() {
         <div className="bg-white w-full lg:w-2/3 rounded-xl shadow-sm border border-[#E4E9EE]">
           <div className="p-5 border border-[#E4E9EE]">
             <h2 className="font-semibold text-gray-800 text-lg">
-              Logitech Indonesia
+              Payment Method
             </h2>
-            <p className="text-sm text-gray-500">Central Jakarta</p>
+         
           </div>
 
           <div>
@@ -118,41 +100,18 @@ export default function CartPage() {
                   <Image
                     src={p.img}
                     alt={p.name}
-                    width={20}
+                    width={30}
                     height={20}
-                    className="w-12 h-12 rounded-lg object-cover"
+                    className="w-16 h-12 rounded-lg object-cover"
                   />
                   <div>
-                    <h4 className="font-medium text-gray-800">{p.name}</h4>
-                    <p className="text-sm text-gray-500">{p.category}</p>
-                    <p className="text-green-600 font-semibold">${p.price}</p>
+                    <h4 className="font-bold text-xl text-gray-800">{p.name}</h4>
+               
+                    <p className=" text-normal">{p.price}</p>
                   </div>
                 </div>
 
-                {/* Quantity & Delete */}
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center border border-[#E4E9EE] rounded-lg px-2">
-                    <button
-                      onClick={() => changeQty(p.id, -1)}
-                      className="p-1 hover:text-indigo-600"
-                    >
-                      <FiMinus />
-                    </button>
-                    <span className="px-3">{p.qty}</span>
-                    <button
-                      onClick={() => changeQty(p.id, 1)}
-                      className="p-1 hover:text-indigo-600"
-                    >
-                      <FiPlus />
-                    </button>
-                  </div>
-                  <button
-                    onClick={() => removeProduct(p.id)}
-                    className="text-gray-400 hover:text-red-500"
-                  >
-                    <FiTrash2 size={18} />
-                  </button>
-                </div>
+
               </div>
             ))}
           </div>
