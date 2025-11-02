@@ -1,20 +1,29 @@
-'use client';
-import { useState } from 'react';
-import { FiMenu, FiSearch, FiShoppingCart, FiUser, FiX } from 'react-icons/fi';
-import Link from 'next/link';
-import Image from 'next/image';
+
+"use client";
+
+import { useState } from "react";
+import { FiMenu, FiSearch, FiShoppingCart, FiUser, FiX, FiLogOut, FiShoppingBag } from "react-icons/fi";
+import { FaRegHeart } from "react-icons/fa";
+import { GiPodiumWinner } from "react-icons/gi";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  console.log('categoryOpen', categoryOpen);
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  const menuItems = [
+    { label: "Purchase List", icon: <FiShoppingBag className="text-gray-600" /> },
+    { label: "My Quiz", icon: <FaRegHeart className="text-gray-600" /> },
+    { label: "Leaderboard", icon: <GiPodiumWinner className="text-gray-600" /> },
+  ];
 
   return (
-    <nav className="w-full bg-white border-b border-gray-200  ">
-      <div className=" mx-auto flex items-center justify-between py-4 px-6 md:px-24 ">
+    <nav className="w-full bg-white border-b border-gray-200 relative z-50">
+      <div className="mx-auto flex items-center justify-between py-4 px-6 md:px-24">
         {/* Left - Logo */}
         <Link href="/" className="flex items-center gap-2">
-          {/* Logo Image */}
           <div className="hidden lg:flex relative">
             <Image
               src="/logo/Logo.png"
@@ -30,30 +39,22 @@ export default function Navbar() {
           >
             <FiMenu className="w-6 h-6" />
           </button>
-
-          {/* Brand Text */}
         </Link>
 
-        {/* Middle - Search + Category */}
-
-        <div className="hidden lg:flex items-center bg-gray-50 rounded-md overflow-hidden w-[500px] xl:w-[800px]  ">
-          {/* Category Button */}
-          <div className="relative ">
+        {/* Middle - Search */}
+        <div className="hidden lg:flex items-center bg-gray-50 rounded-md overflow-hidden w-[500px] xl:w-[800px]">
+          <div className="relative">
             <button
               className="px-3 py-3 cursor-pointer hover:bg-gray-100 text-sm text-gray-600 text-nowrap"
               onClick={() => setCategoryOpen(!categoryOpen)}
             >
               All Categories <span className="ml-1">▾</span>
             </button>
-
-            {/* Smooth Animated Dropdown */}
           </div>
 
-          {/* Divider Line */}
           <p className="border border-gray-300 h-5"></p>
 
-          {/* Search Box */}
-          <div className="flex items-center justify-between w-[650px] ">
+          <div className="flex items-center justify-between w-[650px]">
             <input
               type="text"
               placeholder="Search on quizzy..."
@@ -66,28 +67,99 @@ export default function Navbar() {
         </div>
 
         {/* Right - Icons */}
-        <div className="flex items-center gap-5 ">
+        <div className="flex items-center gap-5 relative">
           <Link href="/cart">
             <button className="text-gray-600 hover:text-indigo-600 cursor-pointer">
               <FiShoppingCart className="w-6 h-6" />
             </button>
           </Link>
-          <p className="border border-gray-300 h-5 "></p>
-          <button className="text-gray-600 hover:text-indigo-600 border border-gray-200 rounded-full p-1.5 cursor-pointer">
+
+          <p className="border border-gray-300 h-5"></p>
+
+          {/* Profile Button */}
+          <button
+            className="text-gray-600 hover:text-indigo-600 border border-gray-200 rounded-full p-1.5 cursor-pointer relative"
+            onClick={() => setProfileOpen(!profileOpen)}
+          >
             <FiUser className="w-5 h-5" />
           </button>
+
+          {/* Profile Popup */}
+          <div
+            className={`absolute top-10 right-0 w-72 bg-white rounded-xl shadow-lg border border-gray-100 p-4 transform transition-all duration-300 z-[99999] ${
+              profileOpen
+                ? "opacity-100 scale-100 visible"
+                : "opacity-0 scale-95 invisible"
+            }`}
+          >
+            {/* Profile Info */}
+            <div className="flex items-center gap-3 border-b border-gray-200 pb-3">
+              <div className="w-12 h-12 relative rounded-full overflow-hidden">
+                <Image
+                  src="/profile.jpg"
+                  alt="User"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 text-sm">
+                  Abdul Malek Sarkar
+                </h3>
+                <p className="text-gray-500 text-xs">
+                  abdul.malek@gmail.com
+                </p>
+              </div>
+            </div>
+
+            {/* Menu Items */}
+            <div className="py-3">
+              <p className="text-gray-500 text-xs uppercase tracking-wider mb-2">Menu</p>
+              <ul className="space-y-2">
+                {menuItems.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 cursor-pointer transition"
+                  >
+                    {item.icon}
+                    <span className="text-sm">{item.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-gray-200 my-2"></div>
+
+            {/* Sign Out */}
+            <button
+              onClick={() => setProfileOpen(false)}
+              className="flex items-center gap-2 text-red-500 text-sm font-medium hover:text-red-600 transition"
+            >
+              <FiLogOut /> Sign Out
+            </button>
+          </div>
         </div>
       </div>
-      {/* large device */}
+
+      {/* Background Blur (when popup open) */}
+      {profileOpen && (
+        <div
+          className="fixed inset-0 bg-black/50  z-40"
+          onClick={() => setProfileOpen(false)}
+        ></div>
+      )}
+
+      {/* Category Dropdown */}
       <div className="absolute top-14 left-[25%] w-40">
         <ul
-          className={` shadow-lg mt-1 rounded-md bg-white z-[999] transform transition-all duration-300 origin-top ${
+          className={`shadow-lg mt-1 rounded-md bg-white z-[999] transform transition-all duration-300 origin-top ${
             categoryOpen
-              ? 'opacity-100 scale-100 visible'
-              : 'opacity-0 scale-95 invisible'
+              ? "opacity-100 scale-100 visible"
+              : "opacity-0 scale-95 invisible"
           }`}
         >
-          {['Science', 'Math', 'History', 'Tech'].map((item) => (
+          {["Science", "Math", "History", "Tech"].map((item) => (
             <li key={item}>
               <Link
                 href={`/category/${item.toLowerCase()}`}
@@ -100,13 +172,13 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
-      {/* small device */}
+
+      {/* Sidebar for Small Devices */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-[9999] transform transition-transform duration-300 ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Header */}
         <div className="flex justify-between items-center px-5 py-4 border-b border-gray-200">
           <h2 className="text-lg font-semibold">Menu</h2>
           <button
@@ -117,31 +189,15 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Links */}
         <div className="flex flex-col p-5 gap-4 text-gray-700">
-          <Link href="/" onClick={() => setSidebarOpen(false)}>
-            Home
-          </Link>
-          <Link href="/category/science" onClick={() => setSidebarOpen(false)}>
-            Science
-          </Link>
-          <Link href="/category/math" onClick={() => setSidebarOpen(false)}>
-            Math
-          </Link>
-          <Link href="/category/history" onClick={() => setSidebarOpen(false)}>
-            History
-          </Link>
-          <Link href="/category/tech" onClick={() => setSidebarOpen(false)}>
-            Tech
-          </Link>
-          <Link href="/cart" onClick={() => setSidebarOpen(false)}>
-            Cart
-          </Link>
-          <Link href="/account" onClick={() => setSidebarOpen(false)}>
-            My Account
-          </Link>
+          <Link href="/" onClick={() => setSidebarOpen(false)}>Home</Link>
+          <Link href="/category/science" onClick={() => setSidebarOpen(false)}>Science</Link>
+          <Link href="/category/math" onClick={() => setSidebarOpen(false)}>Math</Link>
+          <Link href="/category/history" onClick={() => setSidebarOpen(false)}>History</Link>
+          <Link href="/category/tech" onClick={() => setSidebarOpen(false)}>Tech</Link>
+          <Link href="/cart" onClick={() => setSidebarOpen(false)}>Cart</Link>
+          <Link href="/account" onClick={() => setSidebarOpen(false)}>My Account</Link>
         </div>
-
       </div>
     </nav>
   );
