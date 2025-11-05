@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaBrain } from 'react-icons/fa';
 
@@ -27,9 +28,11 @@ const StartQuiz = () => {
           <p className="text-gray-500 text-sm mb-10">
             Get Ready! The Quiz Kicks Off on 17 November 2025 at 10:00 PM
           </p>
-          <button className="px-4 py-2 w-80 text-sm rounded-md bg-gradient-to-r from-[#473BA4] to-[#6A5BE2] text-white font-medium hover:opacity-90">
-           Start Quiz
-          </button>
+          <Link href="/question-ans">
+            <button className="px-4 py-2 w-80 text-sm rounded-md bg-gradient-to-r from-[#473BA4] to-[#6A5BE2] text-white font-medium hover:opacity-90 transition-all">
+              Start Quiz
+            </button>
+          </Link>
         </div>
       </div>
     </div>
