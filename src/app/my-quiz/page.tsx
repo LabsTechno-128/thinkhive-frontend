@@ -52,7 +52,7 @@ export default function QuizCountdown() {
         </div>
       </div>
       <div className="  flex justify-center items-center">
-        <div className="bg-white rounded-2xl shadow-sm text-center p-8 w-full max-w-3xl -mt-9">
+        <div className="bg-white rounded-2xl shadow-sm text-center p-8 w-full max-w-6xl -mt-9">
           {/* Icon */}
           <div className="flex justify-center mb-6">
             <div className="p-5 bg-indigo-100 rounded-full text-indigo-600">
