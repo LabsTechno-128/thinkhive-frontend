@@ -77,7 +77,7 @@ export default function CartPage() {
         </div>
         <div className="flex items-center gap-2">
           <label className="text-sm text-gray-600">Sort By:</label>
-          <select className="border rounded-md px-2 py-1 text-sm focus:outline-none">
+          <select className="border border-gray-300 rounded-md px-2 py-3 text-sm focus:outline-none">
             <option value="relevant">Relevant Order</option>
             <option value="price_low_high">Price: Low → High</option>
             <option value="price_high_low">Price: High → Low</option>

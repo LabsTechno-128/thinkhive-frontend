@@ -100,7 +100,7 @@ export default function LeaderboardPage() {
       <div className="  px-4 lg:px-24 max-w-[1440px] mx-auto">
         {/* --- My Rank Card --- */}
         {me && (
-          <div className="flex justify-between items-center p-4 rounded-2xl shadow-sm bg-gradient-to-r from-violet-600 to-purple-500 text-white -mt-9">
+          <div className="flex flex-col md:flex-row justify-between md:items-center p-4 rounded-2xl shadow-sm bg-gradient-to-r from-violet-600 to-purple-500 text-white -mt-9 gap-5 md:gap-0">
             <div className="flex items-center gap-3">
               <Image
                 src={me.img}
@@ -116,7 +116,7 @@ export default function LeaderboardPage() {
                 <p className="text-violet-200 text-sm">{me.rank}</p>
               </div>
             </div>
-            <div className="px-4 py-2 text-sm font-semibold rounded-lg bg-white text-violet-600">
+            <div className="px-4 py-2 text-sm font-semibold rounded-lg bg-white text-violet-600 w-28 ">
               {me.points} PT
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function LeaderboardPage() {
           {others.map((user) => (
             <div
               key={user.id}
-              className="flex justify-between items-center p-4  shadow-sm border-b border-[#E4E9EE] bg-white hover:bg-gray-100 transition"
+              className="flex flex-col md:flex-row justify-between md:items-center p-4  shadow-sm border-b border-[#E4E9EE] bg-white hover:bg-gray-100 transition gap-5 md:gap-0"
             >
               <div className="flex items-center gap-3">
                 <Image
@@ -142,7 +142,7 @@ export default function LeaderboardPage() {
                   <p className="text-sm text-gray-500">{user.rank}</p>
                 </div>
               </div>
-              <div className="px-4 py-2 text-sm font-semibold rounded-lg border border-violet-200 text-violet-600">
+              <div className="px-4 py-2 text-sm font-semibold rounded-lg border border-violet-200 text-violet-600  w-28">
                 {user.points} PT
               </div>
             </div>

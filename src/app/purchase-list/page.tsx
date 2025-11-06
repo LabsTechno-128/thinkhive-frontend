@@ -67,7 +67,7 @@ const PurchaseList: FC = () => {
             {purchaseData.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between bg-white border-b border-[#E4E9EE]  p-4 hover:shadow-sm transition-shadow "
+                className="flex flex-col md:flex-row md:items-center justify-between bg-white border-b border-[#E4E9EE]  p-4 hover:shadow-sm transition-shadow gap-5 md:gap-0 "
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 relative">
