@@ -57,7 +57,7 @@ export default function QuizSection() {
 
   return (
     <section className="pt-16  text-center">
-      <div className=" mx-auto px-6 md:px-24">
+      <div className=" mx-auto px-4 md:px-10 lg:px-24">
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-title">
           Available Quiz on Quzzy
         </h2>
@@ -67,7 +67,7 @@ export default function QuizSection() {
         </p>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {quizzes.map((quiz ) => (
             <QuizCard
               key={quiz.id}

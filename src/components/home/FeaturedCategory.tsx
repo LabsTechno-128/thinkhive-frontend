@@ -15,7 +15,7 @@ const categories = [
 export default function FeaturedCategory() {
   return (
     <section className="pt-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-10 lg:px-24">
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
@@ -27,7 +27,7 @@ export default function FeaturedCategory() {
         </div>
 
         {/* Category Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map((cat) => (
             <div
               key={cat.id}

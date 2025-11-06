@@ -4,9 +4,9 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="bg-[#F7F7F7] ">
-      <div className=" mx-auto flex flex-col md:flex-row items-center justify-between gap-10 px-6 md:px-24">
+      <div className=" mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10 px-4 md:px-10 lg:px-24">
         {/* Left Text Section */}
-        <div className="lg:w-[50%]">
+        <div className="lg:w-[50%] pb-10">
           <h1 className="text-xl md:text-5xl font-extrabold text-title leading-tight">
             Boost Your Brainpower <br /> With Daily Quizzes
           </h1>
@@ -32,7 +32,7 @@ export default function HeroSection() {
             alt="Quiz Illustration"
             width={490}
             height={500}
-            className="object-contain"
+            className="object-contain w-96 lg:w-full"
           />
         </div>
       </div>

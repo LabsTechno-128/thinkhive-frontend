@@ -11,8 +11,8 @@ export default function Home() {
       <HeroSection></HeroSection>
       <FeaturedCategory></FeaturedCategory>
       <QuizSection></QuizSection>
-      <Physics></Physics>
-      <ArticlesSection></ArticlesSection>
+      {/* <Physics></Physics> */}
+      {/* <ArticlesSection></ArticlesSection> */}
       
        
     </div>
