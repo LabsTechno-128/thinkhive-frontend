@@ -30,7 +30,7 @@ export default function QuizCard({
       </div>
 
       {/* Image */}
-      <div className="flex justify-center pt-14 mb-4 bg-[#F6F6F6] pb-14 rounded-xl">
+      <div className="flex justify-center pt-14 mb-4 bg-[#F6F6F6] pb-14 rounded-xl ">
         <Image
           src={quiz.image}
           alt={quiz.title}
@@ -41,16 +41,16 @@ export default function QuizCard({
       </div>
 
       {/* Title + Price */}
-      <div className="flex justify-between items-center mb-1">
+      <div className="flex justify-between items-center mb-1 px-2">
         <h3 className="font-bold text-gray-800 text-base">{quiz.title}</h3>
         <span className="text-green-600 font-semibold">${quiz.price}</span>
       </div>
 
       {/* Category */}
-      <p className="text-gray-500 text-sm mb-3 text-left">{quiz.category}</p>
+      <p className="text-gray-500 text-sm mb-3 text-left px-2">{quiz.category}</p>
 
       {/* Rating + Info */}
-      <div className="flex items-center gap-1  text-gray-500 mb-5 text-[14px]">
+      <div className="flex items-center gap-1  text-gray-500 mb-5 text-[14px] px-2">
         <FiStar className="text-yellow-400" size={16} />
         <span>{quiz.rating}</span>
         <span className="mx-1">•</span>

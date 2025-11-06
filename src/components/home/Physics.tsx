@@ -4,8 +4,8 @@ import { FiStar } from 'react-icons/fi';
 
 export default function Physics() {
   return (
-    <section className="  bg-[#F7F7F7] mx-24">
-      <div className=" mx-auto flex flex-col md:flex-row items-center justify-between gap-10  ">
+    <section className=" w-full md:w-[1200px]  mt-16 mx-auto">
+      <div className=" mx-auto flex flex-col md:flex-row items-center justify-between gap-10 bg-[#F7F7F7]">
         {/* Left Text Section */}
 
         {/* Right Image Section */}

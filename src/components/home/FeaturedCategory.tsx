@@ -14,14 +14,14 @@ const categories = [
 
 export default function FeaturedCategory() {
   return (
-    <section className="py-16 bg-white">
+    <section className="pt-16 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
             Featured Category
           </h2>
-          <button className="border border-indigo-500 text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-50 transition-all">
+          <button className="border border-indigo-500 text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-50 transition-all text-nowrap">
             View Detail
           </button>
         </div>

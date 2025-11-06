@@ -56,7 +56,7 @@ export default function QuizSection() {
   };
 
   return (
-    <section className="py-16 bg-white text-center">
+    <section className="pt-16  text-center">
       <div className=" mx-auto px-6 md:px-24">
         <h2 className="text-2xl md:text-3xl font-bold mb-2 text-title">
           Available Quiz on Quzzy
