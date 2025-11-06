@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   FiMenu,
   FiSearch,
@@ -19,12 +19,42 @@ export default function Navbar() {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-const menuItems = [
-  { label: "Purchase List", icon: <FiShoppingBag className="text-gray-600" />, href: "/purchase-list" },
-  { label: "My Quiz", icon: <FaRegHeart className="text-gray-600" />, href: "/my-quiz" },
-  { label: "Leaderboard", icon: <GiPodiumWinner className="text-gray-600" />, href: "/leaderboard" },
-];
+  const menuItems = [
+    {
+      label: 'Purchase List',
+      icon: <FiShoppingBag className="text-gray-600" />,
+      href: '/purchase-list'
+    },
+    {
+      label: 'My Quiz',
+      icon: <FaRegHeart className="text-gray-600" />,
+      href: '/my-quiz'
+    },
+    {
+      label: 'Leaderboard',
+      icon: <GiPodiumWinner className="text-gray-600" />,
+      href: '/leaderboard'
+    }
+  ];
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+     
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setCategoryOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="w-full bg-white border-b border-gray-200 relative z-50">
@@ -49,14 +79,38 @@ const menuItems = [
         </Link>
 
         {/* Middle - Search */}
-        <div className="hidden lg:flex items-center bg-gray-50 rounded-md overflow-hidden w-[500px] xl:w-[800px]">
-          <div className="relative">
+
+        <div className="hidden lg:flex items-center bg-gray-50 rounded-md overflow-visible w-[500px] xl:w-[800px] relative">
+          <div>
             <button
               className="px-3 py-3 cursor-pointer hover:bg-gray-100 text-sm text-gray-600 text-nowrap"
               onClick={() => setCategoryOpen(!categoryOpen)}
             >
               All Categories <span className="ml-1">▾</span>
             </button>
+          </div>
+
+          {/* Dropdown */}
+          <div ref={dropdownRef} className="absolute top-14 left- w-40 z-50">
+            <ul
+              className={`shadow-lg mt-1 rounded-md bg-white transform transition-all duration-300 origin-top ${
+                categoryOpen
+                  ? 'opacity-100 scale-100 visible'
+                  : 'opacity-0 scale-95 invisible'
+              }`}
+            >
+              {['Science', 'Math', 'History', 'Tech'].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`/category/${item.toLowerCase()}`}
+                    className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
+                    onClick={() => setCategoryOpen(false)}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <p className="border border-gray-300 h-5"></p>
@@ -93,7 +147,7 @@ const menuItems = [
 
           {/* Profile Popup */}
           <div
-            className={`absolute top-10 right-0 w-80 bg-white rounded-xl shadow-lg border border-gray-100 p-4 transform transition-all duration-300 z-[99999] ${
+            className={`absolute top-10 right-0 w-64 md:w-80 bg-white rounded-xl shadow-lg border border-gray-100 p-4 transform transition-all duration-300 z-[99999] ${
               profileOpen
                 ? 'opacity-100 scale-100 visible'
                 : 'opacity-0 scale-95 invisible'
@@ -103,7 +157,7 @@ const menuItems = [
             <div className="flex items-center gap-3 border-b border-gray-200 pb-3">
               <div className="w-12 h-12 relative rounded-full overflow-hidden">
                 <Image
-                  src="/profile.jpg"
+                  src="/assets/card-quzzy.png"
                   alt="User"
                   fill
                   className="object-cover"
@@ -127,7 +181,7 @@ const menuItems = [
                   <li key={index}>
                     <Link
                       href={item.href}
-                       onClick={() => setProfileOpen(false)}
+                      onClick={() => setProfileOpen(false)}
                       className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 cursor-pointer transition"
                     >
                       {item.icon}
@@ -161,7 +215,7 @@ const menuItems = [
       )}
 
       {/* Category Dropdown */}
-      <div className="absolute top-14 left-[25%] w-40">
+      {/* <div className="absolute top-14 left-[25%] w-40 bg-amber-500">
         <ul
           className={`shadow-lg mt-1 rounded-md bg-white z-[999] transform transition-all duration-300 origin-top ${
             categoryOpen
@@ -181,7 +235,7 @@ const menuItems = [
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
       {/* Sidebar for Small Devices */}
       <div
@@ -215,12 +269,12 @@ const menuItems = [
           <Link href="/category/tech" onClick={() => setSidebarOpen(false)}>
             Tech
           </Link>
-          <Link href="/cart" onClick={() => setSidebarOpen(false)}>
+          {/* <Link href="/cart" onClick={() => setSidebarOpen(false)}>
             Cart
           </Link>
           <Link href="/account" onClick={() => setSidebarOpen(false)}>
             My Account
-          </Link>
+          </Link> */}
         </div>
       </div>
     </nav>
