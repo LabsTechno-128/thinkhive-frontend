@@ -30,7 +30,7 @@ const articles = [
 
 export default function ArticlesSection() {
   return (
-    <section className=" mx-auto  px-6 md:px-24 pt-16">
+    <section className=" mx-auto px-4 md:px-10 lg:px-24 pt-16">
       {/* Header */}
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-2xl font-semibold text-gray-800">

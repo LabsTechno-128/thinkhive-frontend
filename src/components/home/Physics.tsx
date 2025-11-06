@@ -4,8 +4,8 @@ import { FiStar } from 'react-icons/fi';
 
 export default function Physics() {
   return (
-    <section className=" w-full md:w-[1200px]  mt-16 mx-auto">
-      <div className=" mx-auto flex flex-col md:flex-row items-center justify-between gap-10 bg-[#F7F7F7]">
+    <section className=" w-full md:max-w-[1200px] lg:max-w-[1440px]  mt-16 mx-auto px-4 md:px-10 lg:px-24">
+      <div className=" mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 bg-[#F7F7F7]">
         {/* Left Text Section */}
 
         {/* Right Image Section */}
@@ -18,7 +18,7 @@ export default function Physics() {
             className="object-contain "
           />
         </div>
-        <div className="lg:w-[60%] px-5 py-10">
+        <div className="lg:w-[60%] px-5 lg:py-10 pb-10">
           <p className="text-normal mt-5">Featured Quiz of the Week</p>
           <h1 className="text-xl md:text-5xl font-extrabold text-title leading-tight pt-3">
             Boost Your Brainpower <br /> With Daily Quizzes
